@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -37,21 +38,18 @@
             position: relative;
             overflow-x: hidden;
             
-            /* กำหนดพื้นหลังสีพาสเทล */
-            background-color: #d8c8f0;
-            
             /* ใช้รูปภาพที่คุณปลาดุกส่งมาเป็นลวดลายพื้นหลังกระจายรอบทิศทาง */
+            background-color: #d8c8f0;
             background-image: 
                 url("%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%95%E0%B8%B5%E0%B8%99%E0%B8%84%E0%B8%B8%E0%B8%A3%E0%B8%B8%E0%B8%A1%E0%B8%B4.jpg"), /* การ์ตูนคุรุมิ.jpg */
-                url("%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%95%E0%B8%B5%E0%B8%99%E0%B8%84%E0%B8%B8%E0%B8%A3%E0%B8%B8%E0%B8%A1%E0%B8%B4.jpg"), /* รองรับการสะกด */
                 url("images%20(1).jpg"), /* images (1).jpg */
                 url("oEDD0pG0LAq79j6rAb1NJEb7yfeEIoAeAPR7CI~tplv-sdweummd6v-text-logo-v1_QGF1bW51Y2hzaG9w_q75.jpeg"),
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23bca5e3' fill-opacity='0.25'%3E%3Ccircle cx='80' cy='25' r='3'/%3E%3Ccircle cx='25' cy='75' r='4'/%3E%3Cpath d='M85,80 L90,85 L85,90 L80,85 Z'/%3E%3C/g%3E%3C/svg%3E");
             
-            /* จัดขนาดและตำแหน่งให้ลวดลายน้องคุโรมิกระจายตัวได้อย่างเหมาะสมสวยงาม */
-            background-size: 280px, 280px, 240px, 320px, auto;
+            /* จัดขนาดและการกระจายตัวของพื้นหลังแบบ Tile */
+            background-size: 280px, 240px, 320px, auto;
             background-repeat: repeat;
-            background-position: top left, center, bottom right, center, center;
+            background-position: top left, bottom right, center, center;
             background-attachment: fixed;
         }
 
@@ -92,6 +90,7 @@
             box-shadow: 0 25px 60px rgba(110, 71, 181, 0.45);
         }
 
+        /* ดีไซน์หูคุโรมิสุดคิ้วท์ด้านบนการ์ด */
         .kuromi-ears {
             position: absolute;
             top: -45px;
@@ -124,6 +123,7 @@
             transform: rotate(15deg);
         }
 
+        /* ตราสัญลักษณ์กะโหลกสีชมพู */
         .kuromi-skull-badge {
             position: absolute;
             top: -20px;
@@ -179,7 +179,7 @@
             display: block;
         }
 
-        /* อวาตาร์สำรองเมื่อยังไม่ได้อัปโหลดภาพใบหน้าจริง */
+        /* กรณีฉุกเฉินรูปไม่แสดง จะเปลี่ยนเป็นแมวสีม่วงน่ารัก */
         .avatar-fallback {
             width: 100%;
             height: 100%;
@@ -346,7 +346,7 @@
 </head>
 <body>
 
-    <!-- เอฟเฟกต์ประกายฟองสบู่ระยิบระยับลอยรอบๆ ตัวเว็บ -->
+    <!-- เอฟเฟกต์ประกายระยิบระยับแบบลอยรอบๆ หน้าจอ -->
     <div class="sparkle" style="left: 10%; width: 8px; height: 8px; animation-delay: 0s;"></div>
     <div class="sparkle" style="left: 30%; width: 12px; height: 12px; animation-delay: 2s;"></div>
     <div class="sparkle" style="left: 70%; width: 10px; height: 10px; animation-delay: 4s;"></div>
@@ -364,13 +364,12 @@
             <i class="fa-solid fa-heart"></i>
         </div>
 
-        <!-- โซนรูปถ่ายโปรไฟล์ -->
+        <!-- โซนรูปถ่ายโปรไฟล์คุณปลาดุก -->
         <div class="avatar-container">
             <div class="avatar-circle">
-                <!-- ดึงรูปภาพหลักของคุณปลาดุกด้วยระบบความเสถียรรองรับนามสกุลไฟล์ที่หลากหลายบน GitHub -->
                 <img id="user-profile-img" src="1781770654106.jpg" alt="รูปโปรไฟล์อัฟฮัม" class="avatar-img" onerror="handleImageLoadError()">
                 
-                <!-- ตัวอักษรแมวสำรองที่สวยงามหากหาไฟล์ภาพใบหน้าไม่เจอ -->
+                <!-- ตัวสัญลักษณ์แมวสำรองกรณีหารูปไม่เจอ -->
                 <div id="fallback-avatar" class="avatar-fallback">
                     <i class="fa-solid fa-cat"></i>
                 </div>
@@ -452,8 +451,7 @@
     </div>
 
     <script>
-        
-        // ระบบสร้างเสียงตอนกดปุ่มแบบป๊อปอัพ (Web Audio API)
+        // ระบบสร้างเสียงตอนกดปุ่ม (Web Audio API)
         let audioCtx = null;
         function playBubbleSound() {
             try {
@@ -475,11 +473,11 @@
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.15);
             } catch(e) {
-                // ข้ามไปเพื่อป้องกันเบราวเซอร์บล็อกเสียงเริ่มต้น
+                // ข้ามไปเพื่อป้องกันบราวเซอร์บล็อกเสียงเริ่มต้น
             }
         }
 
-        // รายการไฟล์นามสกุลรูปภาพทุกรูปแบบที่เป็นไปได้เพื่อป้องกันรูปโปรไฟล์ไม่ขึ้นบน GitHub
+        // รายการนามสกุลรูปและชื่อไฟล์สำรองที่ระบบจะพยายามไล่สุ่มหาบน GitHub Pages
         const availableImagePaths = [
             '1781770654106.jpg',
             '1781770654106.JPG',
@@ -502,7 +500,7 @@
                 currentTryIndex++;
                 imgElement.src = availableImagePaths[currentTryIndex];
             } else {
-                // หากลองโหลดรูปครบทุกรูปแบบแล้วไม่สำเร็จจริงๆ จะแสดงตัวอวตาร์แมวน่ารักสีม่วงแทนอย่างเนี๊ยบ
+                // หากพยายามหาทุกรูปแล้วรูปแตกจริงๆ จะดึงตัวอวตาร์แมวสีม่วงพาสเทลขึ้นโชว์อย่างน่ารักแทนครับ
                 imgElement.style.display = 'none';
                 fallbackElement.style.display = 'flex';
             }
