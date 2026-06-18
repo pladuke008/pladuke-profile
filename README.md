@@ -37,22 +37,24 @@
             position: relative;
             overflow-x: hidden;
             
-            /* ใช้รูป การ์ตูนคุรุมิ.jpg เป็นพื้นหลังแบบลวดลายทำซ้ำ (Tile Pattern) เพื่อให้เห็นคุโรมิหลายๆ ตัวกระจายอยู่รอบการ์ด */
+            /* กำหนดพื้นหลังสีพาสเทล */
             background-color: #d8c8f0;
-            background-image: url("%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%95%E0%B8%B5%E0%B8%99%E0%B8%84%E0%B8%B5%E0%B8%A3%E0%B8%B5%E0%B8%A1%E0%B8%B4.jpg"), 
-                              url("การ์ตูนคุรุมิ.jpg"), 
-                              url("images%20(1).jpg"), 
-                              url("images (1).jpg"),
-                              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23bca5e3' fill-opacity='0.4'%3E%3Cpath d='M15,10 C17,10 18,8 18,6 C18,4 17,2 15,2 C13,2 12,4 12,6 C12,8 13,10 15,10 Z M15,12 C11,12 10,15 10,15 L20,15 C20,15 19,12 15,12 Z'/%3E%3Cpath d='M50,45 C52,43 55,43 57,45 C59,47 57,51 54,54 L50,57 L46,54 C43,51 41,47 43,45 C45,43 48,43 50,45 Z'/%3E%3Ccircle cx='80' cy='25' r='3'/%3E%3Ccircle cx='25' cy='75' r='4'/%3E%3Cpath d='M85,80 L90,85 L85,90 L80,85 Z'/%3E%3Cpath d='M50,15 L53,20 L58,21 L54,25 L55,30 L50,27 L45,30 L46,25 L42,21 L47,20 Z'/%3E%3C/g%3E%3C/svg%3E");
             
-            /* กำหนดขนาดและการกระจายตัวของพื้นหลัง */
-            background-size: 320px, 320px, 320px, 320px, auto;
+            /* ใช้รูปภาพที่คุณปลาดุกส่งมาเป็นลวดลายพื้นหลังกระจายรอบทิศทาง */
+            background-image: 
+                url("%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%95%E0%B8%B5%E0%B8%99%E0%B8%84%E0%B8%B8%E0%B8%A3%E0%B8%B8%E0%B8%A1%E0%B8%B4.jpg"), /* การ์ตูนคุรุมิ.jpg */
+                url("%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%95%E0%B8%B5%E0%B8%99%E0%B8%84%E0%B8%B8%E0%B8%A3%E0%B8%B8%E0%B8%A1%E0%B8%B4.jpg"), /* รองรับการสะกด */
+                url("images%20(1).jpg"), /* images (1).jpg */
+                url("oEDD0pG0LAq79j6rAb1NJEb7yfeEIoAeAPR7CI~tplv-sdweummd6v-text-logo-v1_QGF1bW51Y2hzaG9w_q75.jpeg"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23bca5e3' fill-opacity='0.25'%3E%3Ccircle cx='80' cy='25' r='3'/%3E%3Ccircle cx='25' cy='75' r='4'/%3E%3Cpath d='M85,80 L90,85 L85,90 L80,85 Z'/%3E%3C/g%3E%3C/svg%3E");
+            
+            /* จัดขนาดและตำแหน่งให้ลวดลายน้องคุโรมิกระจายตัวได้อย่างเหมาะสมสวยงาม */
+            background-size: 280px, 280px, 240px, 320px, auto;
             background-repeat: repeat;
-            background-position: center;
+            background-position: top left, center, bottom right, center, center;
             background-attachment: fixed;
         }
 
-        /* เอฟเฟกต์ประกายไฟระยิบระยับลอยรอบๆ การ์ด */
         .sparkle {
             position: absolute;
             background: white;
@@ -68,9 +70,8 @@
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
-        /* ตัวการ์ดโปรไฟล์สไตล์แก้วกึ่งโปร่งใส (Glassmorphism) เพื่อให้อ่านข้อความง่ายแม้พื้นหลังจะหนาแน่น */
         .profile-card {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 4px solid var(--kuromi-purple);
@@ -91,7 +92,6 @@
             box-shadow: 0 25px 60px rgba(110, 71, 181, 0.45);
         }
 
-        /* ดีไซน์หูคุโรมิติดตั้งบนตัวการ์ด */
         .kuromi-ears {
             position: absolute;
             top: -45px;
@@ -124,7 +124,6 @@
             transform: rotate(15deg);
         }
 
-        /* ตราหัวใจขยับดุ๊กดิ๊กด้านบนการ์ด */
         .kuromi-skull-badge {
             position: absolute;
             top: -20px;
@@ -232,7 +231,6 @@
             margin-bottom: 25px;
         }
 
-        /* การ์ดข้อมูลรายละเอียด */
         .info-list {
             text-align: left;
             margin-bottom: 25px;
@@ -348,6 +346,7 @@
 </head>
 <body>
 
+    <!-- เอฟเฟกต์ประกายฟองสบู่ระยิบระยับลอยรอบๆ ตัวเว็บ -->
     <div class="sparkle" style="left: 10%; width: 8px; height: 8px; animation-delay: 0s;"></div>
     <div class="sparkle" style="left: 30%; width: 12px; height: 12px; animation-delay: 2s;"></div>
     <div class="sparkle" style="left: 70%; width: 10px; height: 10px; animation-delay: 4s;"></div>
@@ -386,7 +385,6 @@
         </div>
         <div class="id-badge">รหัสนักศึกษา: 694245015</div>
 
-        <!-- การ์ดข้อมูลส่วนตัว -->
         <div class="info-list">
             
             <!-- คณะ -->
